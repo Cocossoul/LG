@@ -10,7 +10,7 @@
 #include <stdatomic.h>
 
 #define BUFFER_SIZE 512
-#define LOG 1
+#define LOG 0
 
 /*typedef struct BufQueue {
     gchar * buf;
@@ -201,7 +201,8 @@ GString * get_resource(int fd) {
     gsize end;
     for (end = start; end < str->len && str->str[end] != ' '; end++);
     gchar * resource = g_strndup(str->str + start, end - start);
-    printf("%i: %s\n", fd, resource);
+    if (LOG)
+        printf("%i: %s\n", fd, resource);
     return g_string_new(resource);
 }
 
