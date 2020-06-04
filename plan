@@ -1,0 +1,15 @@
+Communication client vers serveur avec des commandes (cf TP05 ttt_server) de format cmd_sender_content
+- update : demande au serveur tous les changements récents effectués sous forme d'une chaine de caractères séparée par des \n, avec le premier mot étant une commande
+- vote : envoie son vote au server, avec double vérification de si cela est possible client puis server
+- msg : envoie un message sur le tchat, transmis aux joueurs appropriés
+- nickname : crée le joueur avec le pseudo donné
+- playernumber : définit le nombre de joueur requis
+
+La partie est gérée côté serveur, le joueur est indentifié en fonction de son nom de l'url ou dans les commandes, le cas échéant, le serveur lui demande de rentrer un pseudo encore en le mettant dans l'url
+
+Le serveur stocke pour chacun des joueurs un buffer des commandes à envoyer à la prochaine update, avec une méthode d'ajout dans la boucle principale pour éviter les pb
+dus aux threads
+
+Communication server vers client avec des commandes (kinda IRC) de format : cmd_content
+- msg : message à afficher sur le tchat
+- role : envoie le role
