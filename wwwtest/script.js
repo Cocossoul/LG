@@ -16,6 +16,7 @@ var timer;
 var playerName = "joueur";
 var password = "none";
 var logged = false;
+var readyToSend = true;
 
 function init()
 {
@@ -34,8 +35,11 @@ function update() {
 
 function send_to_server(str) {
     try {
+        while (!readyToSend);
+        readyToSend = false;
         request.open("get", str);
         request.send();
+        readyToSend = true;
     }
     catch(err) {
         messages.push("<b>ERROR:</b> Impossible de communiquer avec le serveur, déconnection...");
