@@ -1,6 +1,7 @@
 #include "game.h"
 #include <stdlib.h>
 #include <err.h>
+#include <unistd.h>
 
 LGame * init_game(unsigned int max_player) {
     LGame * game = malloc(sizeof(LGame));
